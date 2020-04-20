@@ -1,0 +1,22 @@
+h1{
+    text-align: center;
+}
+table{
+    margin:auto;
+}
+p{
+    text-align: center;
+    font-size: 30px;
+}
+td{
+    width:100px;
+    height:100px;
+}
+.middle-row{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.middle-column{
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
