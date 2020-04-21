@@ -8,14 +8,14 @@ function check(){
             for(var j=0;j<3;j++){
                 document.getElementById(3*i+j).style.color="green";
             }
-            return;
+            return true;
         }
         //Checking Columns;
         if(ticTacToe[i]==="X" && ticTacToe[i+3]==="X" && ticTacToe[i+6]==="X"){
             for(var j=0;j<3;j++){
                 document.getElementById(i+3*j).style.color="green";
             }
-            return;
+            return true;
         }  
     }
     //Checking for diagonals
@@ -23,13 +23,13 @@ function check(){
         for(var j=0;j<9;j+=4){
             document.getElementById(j).style.color="green"
         }
-        return;
+        return true;
     }
     if(ticTacToe[2]==="X" && ticTacToe[4]==="X" && ticTacToe[6]==="X"){
         for(var j=0;j<7;j+=2){
             document.getElementById(j).style.color="green"
         }
-        return;
+        return true;
     }
 }
 var table=document.querySelector("table");
@@ -37,5 +37,13 @@ table.addEventListener("click", function(event){
     var id = event.srcElement.id
     document.getElementById(id).innerHTML="<p>X</p>"
     ticTacToe[id]="X";
-    check();
+    if(check()===true){
+        this.removeEventListener('click',arguments.callee,false);
+        var btn = document.createElement("BUTTON");   
+        btn.innerHTML = "New game";                 
+        document.body.appendChild(btn);
+        btn.addEventListener("click", function(){
+            window.location.reload();
+        })  
+    }
 })
